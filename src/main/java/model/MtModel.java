@@ -18,7 +18,11 @@ public class MtModel{
 
 	private long id;
 
-	private String mtModel;
+	private String mtModelName;
+
+	private int level;
+
+	private long parentId;
 
 	private int validity;
 }

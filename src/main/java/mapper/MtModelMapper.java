@@ -7,6 +7,7 @@ package mapper;
  * <p>
  * desc:
  */
-public interface MyModelMapper{
+public interface MtModelMapper{
+	//List readAll(@Param("level")int level);
 
 }
