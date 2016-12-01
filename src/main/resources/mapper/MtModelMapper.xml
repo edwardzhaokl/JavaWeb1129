@@ -12,13 +12,35 @@ User类就是users表所对应的实体类
 <!--
 根据id查询得到一个user对象
  -->
+    <resultMap id="mtModel" type="model.MtModel">
+        <result column="ID" jdbcType="BIGINT" property="id" />
+        <result column="MT_MODEL_NAME" jdbcType="VARCHAR" property="mtModelName" />
+        <result column="LEVEL" jdbcType="INTEGER" property="level" />
+        <result column="PARENT_ID" jdbcType="BIGINT" property="parentId"/>
+        <result column="VALIDITY" jdbcType="INTEGER" property="validity" />
+    </resultMap>
+
 
     <select id="readAll" parameterType="int" resultType="MtModel">
-        SELECT * FROM `mt_model` WHERE `LEVEL` = #{level}
+        SELECT * FROM `mt_model` WHERE `LEVEL` = #{level};
     </select>
 
     <select id="read" parameterType="long" resultType="MtModel">
-        SELECT * FROM `mt_model` WHERE `ID` = #{id}
+        SELECT * FROM `mt_model` WHERE `ID` = #{id};
     </select>
+
+    <insert id="create" parameterType="model.MtModel">
+        INSERT INTO `mt_model` (`MT_MODEL_NAME`, `LEVEL`, `PARENT_ID`, `VALIDITY`)
+        VALUES (#{mtModelName}, #{level}, #{parentId}, 1);
+    </insert>
+
+    <update id="update" parameterType="model.MtModel">
+        UPDATE `i5service`.`mt_model`
+        SET `MT_MODEL_NAME` = #{mtModelName},
+            `LEVEL` = #{level},
+            `PARENT_ID` = #{parentId},
+            `VALIDITY` = #{validity}
+        WHERE `ID` = #{id}
+    </update>
 
 </mapper>

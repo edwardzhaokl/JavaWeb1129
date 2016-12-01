@@ -23,7 +23,7 @@ public class Servlet1 extends HttpServlet{
 		InputStream inputStream = new FileInputStream(mapperXmlPath);
 
 		System.out.println(inputStream.toString());
-		response.getWriter().println("<br/>..................");
+		response.getWriter().println("<br/>..................<br/>");
 
 		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
@@ -35,9 +35,9 @@ public class Servlet1 extends HttpServlet{
 		String readAll = "mapper.MtModelMapper.readAll";
 		List result = sqlSession.selectList(readAll, 3);
 
-		response.getWriter().println("<br/>..................");
+		response.getWriter().println("<br/>..................<br/>");
 		response.getWriter().println(result.get(0).toString());
-		response.getWriter().println("<br/>..................");
+		response.getWriter().println("<br/>..................<br/>");
 
 
 		sqlSession.close();
